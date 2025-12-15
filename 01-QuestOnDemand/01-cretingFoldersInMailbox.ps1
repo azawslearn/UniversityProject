@@ -1,3 +1,16 @@
+<#
+    This script authenticates to Microsoft Graph using the client credentials flow
+    and creates a set of mail folders inside a specified user's mailbox.
+
+    It performs the following actions:
+      - Obtains an access token using tenant ID, client ID, and client secret.
+      - Creates 5 root mail folders in the target mailbox.
+      - Under each root folder, creates 2 subfolders.
+      - Tracks successful root folder creations, successful subfolder creations,
+        and any errors that occur.
+      - Outputs a summary showing counts of created folders and any errors.
+#>
+
 ####################
 ## Authentication ##
 ####################

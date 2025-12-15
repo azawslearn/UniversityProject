@@ -1,3 +1,16 @@
+<#
+    This script authenticates to Microsoft Graph using the client credentials flow,
+    retrieves all mail folders in the specified user's mailbox (including subfolders,
+    via recursive enumeration), and then creates two test emails inside every folder found.
+
+    Summary of actions:
+      - Obtains an access token using tenant ID, client ID, and client secret.
+      - Recursively retrieves all mail folders for the target user.
+      - For each folder, generates two test email messages addressed back to the same user.
+      - Writes progress to the console for visibility.
+
+#>
+
 ####################
 ## Authentication ##
 ####################

@@ -3,9 +3,9 @@
 ##################################################################
 
 # Configure Exchange virtual directories
-$Server_name = "ex2016"
-$FQDN = "mail.sofiauniversity.dnsabr.com"
-$auto = "sofiauniversity.dnsabr.com"
+$Server_name = "ex2019"
+$FQDN = "mail.m365.dnsabr.com"
+$auto = "m365.dnsabr.com"
 
 Write-Host "Configuring Exchange virtual directories..."
 
@@ -56,19 +56,19 @@ Get-ClientAccessService | Format-List AutoDiscoverServiceInternalUri
 # Configure Accepted Domain and Email Address Policy
 Write-Host "Configuring accepted domain and email address policy..."
 
-New-AcceptedDomain -Name "sofiauniversity.dnsabr.com" -DomainName "sofiauniversity.dnsabr.com" -DomainType Authoritative | Set-AcceptedDomain -MakeDefault $true
+New-AcceptedDomain -Name "m365.dnsabr.com" -DomainName "m365.dnsabr.com" -DomainType Authoritative | Set-AcceptedDomain -MakeDefault $true
 
-New-EmailAddressPolicy -Name "sofiauniversity.dnsabr.com_policy" `
+New-EmailAddressPolicy -Name "m365.dnsabr.com_policy" `
     -IncludedRecipients "AllRecipients" `
     -Priority "1" `
-    -EnabledEmailAddressTemplates "SMTP:%g.%s@sofiauniversity.dnsabr.com"
+    -EnabledEmailAddressTemplates "SMTP:%g.%s@m365.dnsabr.com"
 
-Update-EmailAddressPolicy -Identity "sofiauniversity.dnsabr.com_policy"
+Update-EmailAddressPolicy -Identity "m365.dnsabr.com_policy"
 
 Write-Host "Exchange configuration completed."
 
 
-#https://mail.sofiauniversity.dnsabr.com/ecp
-#https://mail.sofiauniversity.dnsabr.com/owa
+#https://mail.m365.dnsabr.com/ecp
+#https://mail.m365.dnsabr.com/owa
 
 

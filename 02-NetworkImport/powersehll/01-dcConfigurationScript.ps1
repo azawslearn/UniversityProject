@@ -1,19 +1,3 @@
-########################################
-### Adjusting DC GPO and CRETING DNS ###
-########################################
-
-
-#No complexity - allows to set the password for newly created user to "1" for easier management
-$id = (Get-ADDomain).DistinguishedName
-Set-ADDefaultDomainPasswordPolicy `
-    -Identity $id `
-    -ComplexityEnabled $False `
-    -MinPasswordLength 1 `
-    -PasswordHistoryCount 0 `
-    -MinPasswordAge 00.00:00:00 `
-    -MaxPasswordAge 00.00:00:00
-
-gpupdate /force
 
 #adding a suffix in AD
 Get-ADForest | Format-List UPNSuffixes
@@ -33,9 +17,6 @@ Add-DnsServerResourceRecordCName `
     -Name "mail" `
     -HostNameAlias "ex2016.uniproject.local" `
     -ZoneName "sofiauniversity.dnsabr.com"
-
-#Create UPN
-Set-ADUser -Identity "azureuser" -UserPrincipalName "azureuser@sofiauniversity.dnsabr.com"
 
 # Enable TLS 1.2 for .NET Framework 4.x
 

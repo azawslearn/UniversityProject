@@ -3,7 +3,7 @@
 ##################################################################
 
 # Configure Exchange virtual directories
-$Server_name = "ex2016"
+$Server_name = "ex2013"
 $FQDN = "mail.sofiauniversity.dnsabr.com"
 $auto = "sofiauniversity.dnsabr.com"
 
